@@ -104,6 +104,23 @@ export default {
 				this.showProduct = true;
 			}
 		},
+		cartCount: function () {
+			let cartQuantity = 0;
+			for (let index = 0; index < this.cartItems.length; index++) {
+				cartQuantity += this.cartItems[index].space;
+			}
+			return cartQuantity;
+		},
+		searchLessons: function () {
+			fetch(
+				"https://mdx2021-cw2-b.herokuapp.com/collection/lessons/" +
+					this.searchTxt
+			).then((response) => {
+				response.json().then((data) => {
+					this.lessons = data;
+				});
+			});
+		},
 	},
 
 	created: function () {
