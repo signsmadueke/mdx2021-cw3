@@ -133,22 +133,30 @@ export default {
 
 			if (this.order == "asc") {
 				if (this.attribute == "subject") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareSubjectAsc);
 				} else if (this.attribute == "location") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareLocationAsc);
 				} else if (this.attribute == "price") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(comparePriceAsc);
 				} else {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareSpacesAsc);
 				}
 			} else {
 				if (this.attribute == "subject") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareSubjectDesc);
 				} else if (this.attribute == "location") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareLocationDesc);
 				} else if (this.attribute == "price") {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(comparePriceDesc);
 				} else {
+					// eslint-disable-next-line vue/no-side-effects-in-computed-properties
 					return this.lessons.sort(compareSpacesDesc);
 				}
 			}
