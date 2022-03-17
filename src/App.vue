@@ -88,6 +88,22 @@ export default {
 				});
 			}
 		},
+		removeLessonFromCart: function (index) {
+			this.cartItems[index].space = this.cartItems[index].space - 1;
+			const lessonIndex = this.lessons.findIndex(
+				(lesson) => lesson._id === this.cartItems[index].lessonID
+			);
+			if (lessonIndex != -1) {
+				this.lessons[lessonIndex].space += 1;
+			}
+			if (this.cartItems[index].space == 0) {
+				this.cartItems.splice(index, 1);
+			}
+
+			if (this.cartItems.length == 0) {
+				this.showProduct = true;
+			}
+		},
 	},
 
 	created: function () {
