@@ -121,6 +121,41 @@ export default {
 				});
 			});
 		},
+		checkOut: function (checkOutName, checkOutNumber) {
+			fetch("https://mdx2021-cw2-b.herokuapp.com/collection/orders/", {
+				method: "POST", // set the HTTP method as 'POST'
+				headers: {
+					"Content-Type": "application/json", // set the data type as JSON
+				},
+				body: JSON.stringify({
+					name: checkOutName,
+					phone: checkOutNumber,
+					lessons: this.cartItems,
+				}), // need to stringify the JSON object
+			}).then((response) => response.json());
+
+			for (let index = 0; index < this.cartItems.length; index++) {
+				const lesson = this.cartItems[index].lesson;
+				fetch(
+					`https://mdx2021-cw2-b.herokuapp.com/collection/lessons/${lesson._id}`,
+					{
+						method: "PUT", // set the HTTP method as 'POST'
+						headers: {
+							"Content-Type": "application/json", // set the data type as JSON
+						},
+						body: JSON.stringify({ space: lesson.space }), // need to stringify the JSON object
+					}
+				).then((response) => response.json());
+			}
+			// alert("Check out successful\nYour order has been submitted");
+			this.showProduct = true;
+			this.cartItems = [];
+			this.$swal({
+				title: "Check out successful",
+				text: "Your order has been submitted",
+				icon: "success",
+			});
+		},
 	},
 
 	created: function () {
