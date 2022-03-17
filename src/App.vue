@@ -156,6 +156,15 @@ export default {
 				icon: "success",
 			});
 		},
+		fetchLesson: function (_id) {
+			const lessonIndex = this.lessons.findIndex(
+				(lesson) => lesson._id === _id
+			);
+			if (lessonIndex == -1) {
+				return;
+			}
+			return this.lessons[lessonIndex];
+		},
 	},
 
 	created: function () {
