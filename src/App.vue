@@ -41,7 +41,23 @@
 </template>
 
 <script>
+import Lessons from "./components/Lessons.vue";
+import Checkout from "./components/Checkout.vue";
+
 export default {
 	name: "App",
+	components: {
+		Lessons,
+		Checkout,
+	},
+	data() {
+		return {
+			lessons: [],
+
+			cartItems: [],
+			showProduct: true,
+			searchTxt: "",
+		};
+	},
 };
 </script>
