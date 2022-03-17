@@ -70,6 +70,34 @@ export default {
 			}
 			this.addToCart(lessonID, lesson);
 		},
+
+		updateShowProduct: function () {
+			this.showProduct = !this.showProduct;
+		},
+		addToCart: function (lessonID, lesson) {
+			const itemIndex = this.cartItems.findIndex(
+				(item) => item.lessonID === lessonID
+			);
+			if (itemIndex != -1) {
+				this.cartItems[itemIndex].space += 1;
+			} else {
+				this.cartItems.push({
+					lessonID: lessonID,
+					space: 1,
+					lesson: lesson,
+				});
+			}
+		},
+	},
+
+	created: function () {
+		fetch("https://mdx2021-cw2-b.herokuapp.com/collection/lessons/").then(
+			(response) => {
+				response.json().then((data) => {
+					this.lessons = data;
+				});
+			}
+		);
 	},
 };
 </script>
