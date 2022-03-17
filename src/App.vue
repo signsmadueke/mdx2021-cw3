@@ -59,5 +59,17 @@ export default {
 			searchTxt: "",
 		};
 	},
+
+	methods: {
+		addLessonToCart: function (lessonID, lesson) {
+			const lessonIndex = this.lessons.findIndex(
+				(lesson) => lesson._id === lessonID
+			);
+			if (lessonIndex != -1) {
+				this.lessons[lessonIndex].space -= 1;
+			}
+			this.addToCart(lessonID, lesson);
+		},
+	},
 };
 </script>
